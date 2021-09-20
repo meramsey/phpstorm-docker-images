@@ -3,7 +3,7 @@ FROM ubuntu:latest
 RUN cp /etc/apt/sources.list /etc/apt/sources.list~  && \
     sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 RUN apt-get update && \
-apt-get install pure-ftpd openssl libpam-dev libcap2-dev libldap2-dev libmysqlclient-dev default-libmysqlclient-dev libpq-dev libssl-dev po-debconf dpkg-dev debhelper -y
+DEBIAN_FRONTEND=noninteractive apt-get install pure-ftpd openssl libpam-dev libcap2-dev libldap2-dev libmysqlclient-dev default-libmysqlclient-dev libpq-dev libssl-dev po-debconf dpkg-dev debhelper -y
 RUN mkdir /tmp/pure-ftpd/ && \
 	cd /tmp/pure-ftpd/ && \
 	apt-get source pure-ftpd && \
